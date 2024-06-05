@@ -1,5 +1,5 @@
 /*
- * Copyright 2002-2023 the original author or authors.
+ * Copyright 2002-2024 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,47 +16,55 @@
 
 package sample.config;
 
+import java.util.List;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.feature.Features;
+import org.springframework.security.config.feature.configure.Configurable;
+import org.springframework.security.config.feature.configure.DefaultFeatureConfigurationContext;
+import org.springframework.security.config.feature.configure.FeatureConfigurer;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
-@Configuration
+@Import(FeatureConfiguration.class)
 @EnableWebSecurity
+@Configuration(proxyBeanMethods = false)
 public class SecurityConfig {
 
-	// @formatter:off
 	@Bean
-	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-		http
-				.authorizeHttpRequests((authorize) -> authorize
-						.requestMatchers("/assets/**", "/login", "/login-error").permitAll()
-						.anyRequest().authenticated()
-				)
-				.formLogin((formLogin) -> formLogin
-						.loginPage("/login")
-						.defaultSuccessUrl("/index", true)
-						.failureUrl("/login-error")
-				);
-		return http.build();
-	}
-	// @formatter:on
+	public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity,
+			Features features, List<FeatureConfigurer> featureConfigurers) throws Exception {
 
-	// @formatter:off
+		Configurable<HttpSecurity> configurable = () -> httpSecurity;
+
+		features.toList().forEach((feature) ->
+			featureConfigurers.forEach((featureConfigurer) ->
+				featureConfigurer.configure(
+						new DefaultFeatureConfigurationContext(feature, configurable)
+				)
+			)
+		);
+
+		return httpSecurity.build();
+	}
+
 	@Bean
 	public UserDetailsService userDetailsService() {
+		// @formatter:off
 		UserDetails user = User.withDefaultPasswordEncoder()
 				.username("user")
 				.password("password")
 				.roles("USER")
 				.build();
+		// @formatter:on
 		return new InMemoryUserDetailsManager(user);
 	}
-	// @formatter:on
 
 }
