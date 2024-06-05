@@ -1,0 +1,16 @@
+apply plugin: 'io.spring.convention.spring-module'
+
+dependencies {
+	management platform(project(":spring-security-dependencies"))
+	// NB: Don't add other compile time dependencies to the config-feature module as this breaks tooling
+	api project(':spring-security-core')
+	api project(':spring-security-config')
+	api project(':spring-security-web')
+	api 'org.springframework:spring-aop'
+	api 'org.springframework:spring-beans'
+	api 'org.springframework:spring-context'
+	api 'org.springframework:spring-core'
+
+	provided 'jakarta.servlet:jakarta.servlet-api'
+
+}
