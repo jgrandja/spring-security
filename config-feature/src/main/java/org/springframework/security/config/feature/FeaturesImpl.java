@@ -23,6 +23,7 @@ import java.util.function.Consumer;
 
 import org.springframework.security.config.feature.model.Feature;
 import org.springframework.util.Assert;
+import org.springframework.util.CollectionUtils;
 
 /**
  * @author Joe Grandja
@@ -51,6 +52,11 @@ final class FeaturesImpl implements Features {
 
 	@Override
 	public <T extends Feature> Features addWithTag(String tag) {
+		Assert.hasText(tag, "tag cannot be empty");
+		List<Feature> features = this.featureCatalog.filterByTag(tag);
+		if (!CollectionUtils.isEmpty(features)) {
+			features.forEach((feature) -> add(feature.getClass()));
+		}
 		return this;
 	}
 
@@ -65,6 +71,7 @@ final class FeaturesImpl implements Features {
 		if (feature != null) {
 			B builder = (B) createBuilder(feature);
 			customizer.accept(builder);
+			removeFeature(featureType);
 			this.features.add(builder.build());
 		}
 		return this;
@@ -94,6 +101,10 @@ final class FeaturesImpl implements Features {
 		catch (Exception ex) {
 			throw new RuntimeException(ex);
 		}
+	}
+
+	private <T extends Feature> void removeFeature(Class<T> featureType) {
+		this.features.removeIf((feature) -> feature.getClass().equals(featureType));
 	}
 
 }

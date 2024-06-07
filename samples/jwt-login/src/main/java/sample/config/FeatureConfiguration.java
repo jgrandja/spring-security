@@ -18,6 +18,7 @@ package sample.config;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -39,12 +40,22 @@ public class FeatureConfiguration {
 
 	@Bean
 	public FeatureCatalog featureCatalog() {
+		// @formatter:off
 		DefaultFeatureCatalog featureCatalog = new DefaultFeatureCatalog();
-		featureCatalog.register(HttpBasicAuthenticationFeature.builder().build());
-		featureCatalog.register(CsrfExploitProtectionFeature.builder().build());
-		featureCatalog.register(UrlAuthorizationFeature.builder().build());
-		featureCatalog.register(OAuth2ResourceServerFeature.builder().build());
+		featureCatalog.register(
+				HttpBasicAuthenticationFeature.builder().build(),
+				Set.of("jwt-login"));
+		featureCatalog.register(
+				CsrfExploitProtectionFeature.builder().build(),
+				Set.of("jwt-login"));
+		featureCatalog.register(
+				UrlAuthorizationFeature.builder().build(),
+				Set.of("jwt-login"));
+		featureCatalog.register(
+				OAuth2ResourceServerFeature.builder().build(),
+				Set.of("jwt-login"));
 		return featureCatalog;
+		// @formatter:on
 	}
 
 	@Bean
@@ -60,13 +71,11 @@ public class FeatureConfiguration {
 	public Features features(FeatureCatalog featureCatalog) {
 		// @formatter:off
 		return Features.using(featureCatalog)
-				.add(HttpBasicAuthenticationFeature.class)
+				.addWithTag("jwt-login")
 				.customize(CsrfExploitProtectionFeature.Builder.class,
 					(builder) -> builder
 						.ignored(List.of("/token"))
-				)
-				.add(UrlAuthorizationFeature.class)
-				.add(OAuth2ResourceServerFeature.class);
+				);
 		// @formatter:on
 	}
 
