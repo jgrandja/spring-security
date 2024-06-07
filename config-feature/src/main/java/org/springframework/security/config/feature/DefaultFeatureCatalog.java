@@ -17,7 +17,11 @@
 package org.springframework.security.config.feature;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import org.springframework.lang.Nullable;
 import org.springframework.security.config.feature.model.Feature;
@@ -29,11 +33,16 @@ import org.springframework.util.Assert;
  */
 public final class DefaultFeatureCatalog implements FeatureCatalog {
 
-	private final List<Feature> features = new ArrayList<>();
+	private final Map<Feature, Set<String>> features = new HashMap<>();
 
 	public void register(Feature feature) {
+		register(feature, new HashSet<>());
+	}
+
+	public void register(Feature feature, Set<String> tags) {
 		Assert.notNull(feature, "feature cannot be null");
-		this.features.add(feature);
+		Assert.notNull(tags, "tags cannot be null");
+		this.features.put(feature, tags);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -41,7 +50,7 @@ public final class DefaultFeatureCatalog implements FeatureCatalog {
 	@Override
 	public <T extends Feature> T getById(String id) {
 		Assert.hasText(id, "id cannot be empty");
-		for (Feature feature : this.features) {
+		for (Feature feature : this.features.keySet()) {
 			if (feature.getId().equals(id)) {
 				return (T) feature;
 			}
@@ -51,14 +60,14 @@ public final class DefaultFeatureCatalog implements FeatureCatalog {
 
 	@Override
 	public List<Feature> getAll() {
-		return List.copyOf(this.features);
+		return List.copyOf(this.features.keySet());
 	}
 
 	@Override
 	public List<Feature> filterByType(FeatureType featureType) {
 		Assert.notNull(featureType, "featureType cannot be null");
 		List<Feature> features = new ArrayList<>();
-		for (Feature feature : this.features) {
+		for (Feature feature : this.features.keySet()) {
 			if (feature.getFeatureType().equals(featureType)) {
 				features.add(feature);
 			}
@@ -68,7 +77,14 @@ public final class DefaultFeatureCatalog implements FeatureCatalog {
 
 	@Override
 	public List<Feature> filterByTag(String tag) {
-		return null;
+		Assert.hasText(tag, "tag cannot be empty");
+		List<Feature> features = new ArrayList<>();
+		for (Map.Entry<Feature, Set<String>> feature : this.features.entrySet()) {
+			if (feature.getValue().contains(tag)) {
+				features.add(feature.getKey());
+			}
+		}
+		return features;
 	}
 
 }
