@@ -6,6 +6,7 @@ dependencies {
 	api project(':spring-security-core')
 	api project(':spring-security-config')
 	api project(':spring-security-web')
+	api project(':spring-security-oauth2-resource-server')
 	api 'org.springframework:spring-aop'
 	api 'org.springframework:spring-beans'
 	api 'org.springframework:spring-context'
