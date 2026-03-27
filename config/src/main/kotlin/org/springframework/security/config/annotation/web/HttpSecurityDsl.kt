@@ -1093,6 +1093,40 @@ class HttpSecurityDsl(private val http: HttpSecurity, private val init: HttpSecu
     }
 
     /**
+     * Configures OAuth 2.1 Authorization Server support.
+     *
+     * Example:
+     *
+     * ```
+     * @Configuration
+     * @EnableWebSecurity
+     * class SecurityConfig {
+     *
+     *     @Bean
+     *     fun securityFilterChain(http: HttpSecurity): SecurityFilterChain {
+     *         http {
+     *             oauth2AuthorizationServer {
+     *                 authorizationEndpoint {
+     *                     consentPage = "/oauth2/consent"
+     *                 }
+     *             }
+     *         }
+     *         return http.build()
+     *     }
+     * }
+     * ```
+     *
+     * @param oauth2AuthorizationServerConfiguration custom configuration to configure the
+     * OAuth 2.1 Authorization Server
+     * @see [OAuth2AuthorizationServerDsl]
+     * @since 7.0
+     */
+    fun oauth2AuthorizationServer(oauth2AuthorizationServerConfiguration: OAuth2AuthorizationServerDsl.() -> Unit) {
+        val oauth2AuthorizationServerCustomizer = OAuth2AuthorizationServerDsl().apply(oauth2AuthorizationServerConfiguration).get()
+        this.http.oauth2AuthorizationServer(oauth2AuthorizationServerCustomizer)
+    }
+
+    /**
      * Configures One-Time Token Login Support.
      *
      * Example:
