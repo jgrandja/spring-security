@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "deny": [
+      "Read(**/build/**)",
+      "Edit(**/build/**)",
+      "Read(**/.gradle/**)",
+      "Edit(**/.gradle/**)",
+      "Read(**/out/**)",
+      "Edit(**/out/**)",
+      "Read(**/bin/**)",
+      "Edit(**/bin/**)",
+      "Read(**/.idea/**)",
+      "Edit(**/.idea/**)",
+      "Read(**/.vscode/**)",
+      "Edit(**/.vscode/**)",
+      "Read(**/.kotlin/**)",
+      "Edit(**/.kotlin/**)",
+      "Read(**/node_modules/**)",
+      "Edit(**/node_modules/**)",
+      "Read(**/target/**)",
+      "Edit(**/target/**)",
+      "Read(**/classes/**)",
+      "Edit(**/classes/**)"
+    ]
+  }
+}
