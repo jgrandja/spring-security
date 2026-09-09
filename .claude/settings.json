@@ -20,7 +20,8 @@
       "Read(**/target/**)",
       "Edit(**/target/**)",
       "Read(**/classes/**)",
-      "Edit(**/classes/**)"
+      "Edit(**/classes/**)",
+      "Bash(git push:*)"
     ]
   },
   "enabledPlugins": {
