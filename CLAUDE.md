@@ -52,6 +52,17 @@ Enforced by `.editorconfig` and checkstyle (via `io.spring.javaformat`), not jus
   Gradle import — do not import via the Gradle for Java extension; use the generated Eclipse
   metadata instead.
 
+### Symbol search
+
+The `jdtls-lsp` plugin is enabled (see `.claude/settings.json`), providing an `LSP` tool backed by
+the Java language server. For Java symbol lookups — find a class/method definition, find all
+references to a symbol, list symbols in a file, search symbols workspace-wide — prefer the `LSP`
+tool (`goToDefinition`, `findReferences`, `documentSymbol`, `workspaceSymbol`, etc.) over
+`grep`/text search, since it understands Java semantics (overloads, inheritance, imports) instead
+of matching text. Fall back to `grep`/Explore for non-Java files, plain string/config search,
+anything not tied to a specific symbol, or if the `LSP` tool/`jdtls-lsp` plugin isn't working for
+any reason (e.g. the underlying Java language server isn't installed).
+
 ## Architecture
 
 ### Module layout
