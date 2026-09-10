@@ -2,7 +2,7 @@
 
 Based on ["How Claude Code works in large codebases: best practices and where to start"](https://claude.com/blog/how-claude-code-works-in-large-codebases-best-practices-and-where-to-start).
 
-This repo has no `.claude/` config or `CLAUDE.md` yet. It's a large multi-module Gradle
+This repo is a large multi-module Gradle
 project (~40 modules: `core`, `config`, `web`, `oauth2`, `saml2`, `ldap`, `cas`,
 `crypto`, `acl`, `messaging`, `rsocket`, etc.), so the article's guidance on making a
 large codebase "legible" to Claude applies directly. Below is a concrete setup checklist
@@ -118,11 +118,33 @@ reserved for editing. Don't mix broad exploration and editing in the same contex
 
 ## Immediate next steps (suggested order)
 
-1. [ ] Write root `CLAUDE.md` (build/test commands, formatting, JDK version).
-2. [ ] Add `.claude/settings.json` with permission excludes for build artifacts.
-3. [ ] Set up Java LSP integration.
-4. [ ] Document scoped per-module test commands.
-5. [ ] Add subdirectory `CLAUDE.md`s only where real local convention exists
-       (start with `oauth2/`, `saml2/`, `config/` if needed).
-6. [ ] Add a formatting hook enforcing `.editorconfig`.
-7. [ ] Revisit MCP/skills/plugins once the above is in daily use.
+1. [x] Write root `CLAUDE.md` (build/test commands, formatting, JDK version).
+2. [x] Add `.claude/settings.json` with permission excludes for build artifacts
+       (`build/`, `.gradle/`, `out/`, `bin/`, `.idea/`, `.vscode/`, `.kotlin/`,
+       `node_modules/`, `target/`, `classes/`) and a deny rule for `git push`.
+3. [x] Set up Java LSP integration (`jdtls-lsp` plugin enabled in `.claude/settings.json`).
+4. [x] Document scoped per-module test commands (in root `CLAUDE.md`'s Build System section).
+5. [x] Add subdirectory `CLAUDE.md`s where real local convention exists — done for
+       `core/`, `web/`, `config/`, `crypto/`, `acl/`, `cas/`, `ldap/`, `messaging/`,
+       `rsocket/`, `webauthn/`, `taglibs/`, `data/`, `access/`, `test/`, `docs/`,
+       `buildSrc/`, `javascript/`, each `kerberos/*` submodule, each `oauth2/*`
+       submodule, and `saml2/saml2-service-provider/`. `saml2-service-provider` is
+       the only `saml2/*` leaf covered so far — `saml2/saml2-core` (if applicable)
+       is still open if real local convention emerges there.
+6. [ ] Add a formatting hook enforcing `.editorconfig` — not yet configured; no
+       hooks exist in `.claude/settings.json` yet.
+7. [ ] Revisit MCP/skills/plugins once the above is in daily use — no
+       `.claude/skills/` directory yet; only the `jdtls-lsp` plugin is enabled so far.
+
+## Outstanding from the numbered sections above
+
+- **§4 permissions**: no allowlist yet for safe repeated commands (`./gradlew *:test`,
+  `git status`, `git diff`) — only deny rules exist so far. Consider the
+  `fewer-permission-prompts` skill once there's real session history to mine.
+- **§6 hooks**: no formatting/pre-commit hook, and no stop hook prompting for
+  CLAUDE.md updates.
+- **§7 skills**: none created yet (e.g. "add a new `AuthenticationProvider`/`Filter`",
+  Antora docs update helper, release process helper).
+- **§8 MCP servers**: not started (intentionally deferred per the article's guidance).
+- **§10 governance**: no documented DRI/review cadence for `.claude/settings.json`,
+  root `CLAUDE.md`, or skills yet.
