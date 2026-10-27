@@ -1,9 +1,9 @@
-# CLAUDE.md — spring-security-webauthn
+# AGENTS.md — spring-security-webauthn
 
-Guidance specific to this module. See the root [CLAUDE.md](../CLAUDE.md) for repo-wide build,
+Guidance specific to this module. See the root [AGENTS.md](../AGENTS.md) for repo-wide build,
 formatting, and contribution conventions — this file only adds what's local to `webauthn`. This
 is the **server-side** WebAuthn/passkey implementation; the browser-side registration/login
-ceremony JS lives in the separate [javascript/CLAUDE.md](../javascript/CLAUDE.md) module and is
+ceremony JS lives in the separate [javascript/AGENTS.md](../javascript/AGENTS.md) module and is
 synced into `spring-security-web` at build time, not into this module.
 
 ## Module

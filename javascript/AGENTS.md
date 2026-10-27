@@ -1,6 +1,6 @@
-# CLAUDE.md — spring-security-javascript
+# AGENTS.md — spring-security-javascript
 
-Guidance specific to this module. See the root [CLAUDE.md](../CLAUDE.md) for repo-wide build,
+Guidance specific to this module. See the root [AGENTS.md](../AGENTS.md) for repo-wide build,
 formatting, and contribution conventions — those Java/Gradle conventions (JDK toolchain,
 checkstyle, `.editorconfig`) mostly do not apply here. This is the one module in the repo with a
 Node/npm toolchain instead of a Java source tree.
@@ -27,7 +27,7 @@ Common commands (run from `javascript/`, or via Gradle from the repo root):
 This module exposes its build output as a custom outgoing Gradle configuration named
 `javascript` (`configurations { javascript { canBeConsumed = true; canBeResolved = false } }`),
 backed by the `build/dist` directory and built via the `npm_run_assemble` task. The `web` module
-(see [web/CLAUDE.md](../web/CLAUDE.md)) declares `javascript project(path:
+(see [web/AGENTS.md](../web/AGENTS.md)) declares `javascript project(path:
 ':spring-security-javascript', configuration: 'javascript')` and syncs that directory into its
 own `build/spring-security-javascript` at build time — that's how the bundled WebAuthn JS ends up
 available to `spring-security-web`'s default login/registration pages. When changing anything

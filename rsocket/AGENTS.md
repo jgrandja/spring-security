@@ -1,6 +1,6 @@
-# CLAUDE.md — spring-security-rsocket
+# AGENTS.md — spring-security-rsocket
 
-Guidance specific to this module. See the root [CLAUDE.md](../CLAUDE.md) for repo-wide build,
+Guidance specific to this module. See the root [AGENTS.md](../AGENTS.md) for repo-wide build,
 formatting, and contribution conventions — this file only adds what's local to `rsocket`.
 
 ## Module
@@ -24,7 +24,7 @@ models (REQUEST_RESPONSE, REQUEST_STREAM, etc.), not an HTTP request or a `sprin
 `api/PayloadExchangeType`, `core/DefaultPayloadExchange`) and builds a full parallel security
 stack around it, deliberately mirroring `web`'s `Filter`/`RequestMatcher`/`AuthorizationManager`
 and `messaging`'s `Message`/`MessageMatcher` design (see
-[web/CLAUDE.md](../web/CLAUDE.md)/[messaging/CLAUDE.md](../messaging/CLAUDE.md)) rather than
+[web/AGENTS.md](../web/AGENTS.md)/[messaging/AGENTS.md](../messaging/AGENTS.md)) rather than
 inventing an unrelated model:
 
 - `api/PayloadInterceptor`/`PayloadInterceptorChain` — the `Filter`/`FilterChain` equivalent.

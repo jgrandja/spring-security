@@ -1,6 +1,6 @@
-# CLAUDE.md — spring-security-crypto
+# AGENTS.md — spring-security-crypto
 
-Guidance specific to this module. See the root [CLAUDE.md](../CLAUDE.md) for repo-wide build,
+Guidance specific to this module. See the root [AGENTS.md](../AGENTS.md) for repo-wide build,
 formatting, and contribution conventions — this file only adds what's local to `crypto`.
 
 ## Module

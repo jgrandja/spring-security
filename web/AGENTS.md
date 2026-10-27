@@ -1,6 +1,6 @@
-# CLAUDE.md — spring-security-web
+# AGENTS.md — spring-security-web
 
-Guidance specific to this module. See the root [CLAUDE.md](../CLAUDE.md) for repo-wide build,
+Guidance specific to this module. See the root [AGENTS.md](../AGENTS.md) for repo-wide build,
 formatting, and contribution conventions — this file only adds what's local to `web`.
 
 ## Module
@@ -12,7 +12,7 @@ not bundled) so reactive-only applications aren't forced to carry the servlet AP
 `spring-webmvc` and `spring-webflux` are both `optional`, reflecting that this single module
 supports both stacks. Also has a custom `javascript`/`syncJavascript` build task that pulls the
 bundled WebAuthn client JS from `:spring-security-javascript` into resources at build time (see
-[javascript/CLAUDE.md](../javascript/CLAUDE.md)) — don't hand-edit synced JS under `build/`.
+[javascript/AGENTS.md](../javascript/AGENTS.md)) — don't hand-edit synced JS under `build/`.
 
 Test scoping: `./gradlew :spring-security-web:test`, or with a filter:
 `./gradlew :spring-security-web:test --tests "*FilterChainProxy*"`.
