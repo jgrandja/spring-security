@@ -1,6 +1,6 @@
-# CLAUDE.md — spring-security-kerberos-core
+# AGENTS.md — spring-security-kerberos-core
 
-Guidance specific to this module. See the root [CLAUDE.md](../../CLAUDE.md) for repo-wide build,
+Guidance specific to this module. See the root [AGENTS.md](../../AGENTS.md) for repo-wide build,
 formatting, and contribution conventions — this file only adds what's local to `kerberos-core`.
 
 ## Module

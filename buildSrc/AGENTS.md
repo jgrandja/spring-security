@@ -1,8 +1,8 @@
-# CLAUDE.md — buildSrc
+# AGENTS.md — buildSrc
 
-Guidance specific to this directory. See the root [CLAUDE.md](../CLAUDE.md) for repo-wide build,
+Guidance specific to this directory. See the root [AGENTS.md](../AGENTS.md) for repo-wide build,
 formatting, and contribution conventions — this file only adds what's local to `buildSrc`. Unlike
-every other subdirectory covered by a `CLAUDE.md` in this repo, `buildSrc` is not a
+every other subdirectory covered by a `AGENTS.md` in this repo, `buildSrc` is not a
 `spring-security-*` feature module — it's Gradle's auto-included build-logic project, compiled and
 put on the classpath of every other build script before the main build runs.
 
@@ -26,7 +26,7 @@ it's an external dependency; check `buildSrc/build.gradle`'s `implementation`/`l
 
 - `src/main/groovy/*.gradle` — **script plugins** (precompiled script plugins), applied by `id`
   matching the filename minus `.gradle` (e.g. `java-toolchain.gradle` → `apply plugin:
-  'java-toolchain'`). These are what the root/module `CLAUDE.md` files reference as
+  'java-toolchain'`). These are what the root/module `AGENTS.md` files reference as
   "buildSrc conventions": `java-toolchain.gradle`, `security-kotlin.gradle`,
   `security-nullability.gradle`, `compile-warnings-error.gradle`, `javadoc-warnings-error.gradle`,
   `test-compile-target-jdk25.gradle`.
@@ -39,7 +39,7 @@ it's an external dependency; check `buildSrc/build.gradle`'s `implementation`/`l
 ## Locally-implemented plugins
 
 - `trang/` — `TrangPlugin` + `RncToXsd` task: the implementation behind
-  `./gradlew :spring-security-config:rncToXsd` (see [config/CLAUDE.md](../config/CLAUDE.md)),
+  `./gradlew :spring-security-config:rncToXsd` (see [config/AGENTS.md](../config/AGENTS.md)),
   wrapping the Trang RELAX NG compact syntax → XSD converter.
 - `lock/` — `GlobalLockPlugin`/`GlobalLockTask`, registered as the `locks` plugin ID, applied in
   the root `build.gradle`.

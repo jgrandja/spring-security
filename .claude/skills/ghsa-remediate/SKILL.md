@@ -142,7 +142,7 @@ State these before doing anything else:
    advisory actually reported. This is a bug fix, not an opportunity to
    redesign the surrounding code.
 2. Check whether an equivalent reactive or servlet counterpart of the fixed
-   component exists (per the root `CLAUDE.md` servlet/reactive-duality
+   component exists (per the root `AGENTS.md` servlet/reactive-duality
    note) and fix both if a parallel implementation shares the same
    weakness.
 3. Apply the fix directly in `--source-dir`, still on `ghsa-<issue-no>`.
@@ -184,7 +184,7 @@ module name, and these instructions:
 3. Run the affected module's full existing test suite —
    `./gradlew :spring-security-<module>:test` (confirm the module's Gradle
    project name first with `./gradlew projects` if unsure, per the
-   build-file-based naming rule in the root `CLAUDE.md`) — expected: no
+   build-file-based naming rule in the root `AGENTS.md`) — expected: no
    regressions. Invoke via the Bash tool with a `timeout` of 600000
    (milliseconds) rather than a shell-level `timeout` command.
 4. Report back, per check: pass/fail and the raw command output. Do not

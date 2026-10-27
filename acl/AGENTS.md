@@ -1,6 +1,6 @@
-# CLAUDE.md — spring-security-acl
+# AGENTS.md — spring-security-acl
 
-Guidance specific to this module. See the root [CLAUDE.md](../CLAUDE.md) for repo-wide build,
+Guidance specific to this module. See the root [AGENTS.md](../AGENTS.md) for repo-wide build,
 formatting, and contribution conventions — this file only adds what's local to `acl`.
 
 ## Module
@@ -44,7 +44,7 @@ Test scoping: `./gradlew :spring-security-acl:test`, or with a filter:
 ## Relationship to other modules
 
 - `access` module's `vote/AbstractAclVoter` is the integration point on the *voting-based* legacy
-  method-security side (see [access/CLAUDE.md](../access/CLAUDE.md)) — it's declared there because
+  method-security side (see [access/AGENTS.md](../access/AGENTS.md)) — it's declared there because
   `access` only has an `optional` dependency on this module, whereas this module has no reverse
   dependency on `access`.
 - `AclPermissionEvaluator`/`AclPermissionCacheOptimizer` are how this module plugs into the SpEL

@@ -1,6 +1,6 @@
-# CLAUDE.md — spring-security-access
+# AGENTS.md — spring-security-access
 
-Guidance specific to this module. See the root [CLAUDE.md](../CLAUDE.md) for repo-wide build,
+Guidance specific to this module. See the root [AGENTS.md](../AGENTS.md) for repo-wide build,
 formatting, and contribution conventions — this file only adds what's local to `access`.
 
 ## Module
@@ -9,7 +9,7 @@ Gradle project `:spring-security-access` (`spring-security-access.gradle`). Depe
 `spring-security-core` and `spring-security-crypto` (`api`); `spring-security-acl`,
 `spring-security-messaging`, and `spring-security-web` are `optional`. Confusingly, this module
 shares its base package name (`org.springframework.security.access`) with a *different* package
-already inside `spring-security-core` (`core/access` — see [core/CLAUDE.md](../core/CLAUDE.md)).
+already inside `spring-security-core` (`core/access` — see [core/AGENTS.md](../core/AGENTS.md)).
 They are not duplicates and do not overlap in content:
 
 - `core`'s `access` package owns the **`@PreAuthorize`/`@PostAuthorize`/`@Secured` annotations

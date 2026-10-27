@@ -1,6 +1,6 @@
-# CLAUDE.md — spring-security-oauth2-authorization-server
+# AGENTS.md — spring-security-oauth2-authorization-server
 
-Guidance specific to this module. See the root [CLAUDE.md](../../CLAUDE.md) for repo-wide build,
+Guidance specific to this module. See the root [AGENTS.md](../../AGENTS.md) for repo-wide build,
 formatting, and contribution conventions — this file only adds what's local to
 `oauth2-authorization-server`.
 
