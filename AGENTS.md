@@ -1,6 +1,6 @@
-# CLAUDE.md
+# AGENTS.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to AI Agents when working with code in this repository.
 
 ## Project
 
@@ -96,7 +96,7 @@ counterpart lives — it varies by module (and even by package within a module),
   name (e.g. `AuthenticationManager` / `ReactiveAuthenticationManager`).
 - `web`: default/unqualified packages are servlet; `web.server` is a full reactive mirror of the
   whole module; `web.servlet`/`web.reactive` are narrow framework-integration glue, not mirrors.
-- `config`: inconsistent per area — see [config/CLAUDE.md](config/CLAUDE.md) for the actual
+- `config`: inconsistent per area — see [config/AGENTS.md](config/AGENTS.md) for the actual
   locations (e.g. the reactive DSL entry point `ServerHttpSecurity` lives in `config/web/server`,
   a sibling of `annotation`, not inside `annotation/web/reactive`).
 - `oauth2-client`/`oauth2-resource-server`: reactive clients/filters live alongside blocking ones.

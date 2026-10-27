@@ -1,6 +1,6 @@
-# CLAUDE.md — spring-security-test
+# AGENTS.md — spring-security-test
 
-Guidance specific to this module. See the root [CLAUDE.md](../CLAUDE.md) for repo-wide build,
+Guidance specific to this module. See the root [AGENTS.md](../AGENTS.md) for repo-wide build,
 formatting, and contribution conventions — this file only adds what's local to `test`. Like
 `kerberos-test`, this module's fixtures live in `src/main/java`, not `src/test/java` — it's
 shipped as a real dependency for *other* modules' and applications' tests (e.g. `docs`'s test

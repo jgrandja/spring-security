@@ -1,6 +1,6 @@
-# CLAUDE.md — spring-security-docs
+# AGENTS.md — spring-security-docs
 
-Guidance specific to this module. See the root [CLAUDE.md](../CLAUDE.md) for repo-wide build,
+Guidance specific to this module. See the root [AGENTS.md](../AGENTS.md) for repo-wide build,
 formatting, and contribution conventions — this file only adds what's local to `docs`. Unlike
 every feature module, this is the Antora/Asciidoctor reference documentation, built via
 `./gradlew :spring-security-docs:antora` (output published to `docs/build/site`).
@@ -39,10 +39,10 @@ prose directly, and re-run this module's tests rather than just eyeballing the d
 `modules/ROOT/pages/servlet/` and `modules/ROOT/pages/reactive/` are separate top-level page trees
 (each with their own `authentication/`, `authorization/`, `configuration/`, `exploits/`,
 `integrations/`, `oauth2/`, `test/` subdirectories) — consistent with the servlet/reactive
-duality documented in the root CLAUDE.md, but here expressed as parallel documentation sections
+duality documented in the root AGENTS.md, but here expressed as parallel documentation sections
 rather than parallel code. `modules/ROOT/pages/migration/` and `migration-8/` hold
 version-upgrade guides; `modules/ROOT/pages/native-image/` covers AOT/native-image support (see
-the `aot` packages referenced in several module `CLAUDE.md` files). `modules/ROOT/partials/` and
+the `aot` packages referenced in several module `AGENTS.md` files). `modules/ROOT/partials/` and
 `modules/ROOT/examples/` hold reusable `.adoc` fragments and example resources
 (`examples/kerberos/` etc.) included from multiple pages.
 

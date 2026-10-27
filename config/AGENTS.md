@@ -1,6 +1,6 @@
-# CLAUDE.md — spring-security-config
+# AGENTS.md — spring-security-config
 
-Guidance specific to this module. See the root [CLAUDE.md](../CLAUDE.md) for repo-wide build,
+Guidance specific to this module. See the root [AGENTS.md](../AGENTS.md) for repo-wide build,
 formatting, and contribution conventions — this file only adds what's local to `config`, and
 corrects the root file's simplified description of the servlet/reactive DSL split.
 
@@ -96,7 +96,7 @@ change to a `*Configurer` may need a corresponding change to its XML parser coun
 The XML namespace is defined by RNC source files under
 `config/src/main/resources/org/springframework/security/config/`, one pair of
 `spring-security-<version>.rnc`/`.xsd` per release since 3.1 (versions before 3.1 only have the
-`.xsd`), plus a shared `spring-security.xsl`. Per the root CLAUDE.md: never hand-edit an `.xsd` —
+`.xsd`), plus a shared `spring-security.xsl`. Per the root AGENTS.md: never hand-edit an `.xsd` —
 edit the matching `.rnc` and run `./gradlew :spring-security-config:rncToXsd`.
 
 ## AOT hints
