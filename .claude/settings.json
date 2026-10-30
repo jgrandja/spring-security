@@ -22,6 +22,18 @@
       "Read(**/classes/**)",
       "Edit(**/classes/**)",
       "Bash(git push:*)"
+    ],
+    "allow": [
+      "Bash(git status:*)",
+      "Bash(git rev-parse:*)",
+      "Bash(git show-ref:*)",
+      "Bash(git log:*)",
+      "Bash(git diff:*)",
+      "Bash(git stash:*)",
+      "Bash(git checkout:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(./gradlew:*)"
     ]
   },
   "enabledPlugins": {
