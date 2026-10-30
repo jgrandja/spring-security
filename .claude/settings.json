@@ -1,7 +1,14 @@
 {
   "permissions": {
     "deny": [
-      "Read(**/build/**)",
+      "Read(**/build/classes/**)",
+      "Read(**/build/libs/**)",
+      "Read(**/build/tmp/**)",
+      "Read(**/build/generated/**)",
+      "Read(**/build/resources/**)",
+      "Read(**/build/kotlin/**)",
+      "Read(**/build/distributions/**)",
+      "Read(**/build/dist/**)",
       "Edit(**/build/**)",
       "Read(**/.gradle/**)",
       "Edit(**/.gradle/**)",
@@ -22,6 +29,19 @@
       "Read(**/classes/**)",
       "Edit(**/classes/**)",
       "Bash(git push:*)"
+    ],
+    "allow": [
+      "Read(**/build/test-results/**)",
+      "Bash(git status:*)",
+      "Bash(git rev-parse:*)",
+      "Bash(git show-ref:*)",
+      "Bash(git log:*)",
+      "Bash(git diff:*)",
+      "Bash(git stash:*)",
+      "Bash(git checkout:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(./gradlew:*)"
     ]
   },
   "enabledPlugins": {
